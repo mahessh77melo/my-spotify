@@ -1,16 +1,26 @@
-import React, { useReducer } from "react";
+import React, { createContext, useEffect } from "react";
 import About from "./About";
 import MyApp from "./myApp";
 import RedTest from "./RedTest";
 import { useStateValue } from "./StateProvider";
-import { reducer, actions } from "./reducer";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { actions } from "./reducer";
 
 function App() {
-	const [mystate, dispatch] = useReducer(reducer, useStateValue());
+	const [mystate, dispatch] = useStateValue();
+	const context = createContext(mystate);
+	window.m = mystate;
+	useEffect(() => {
+		console.log(mystate);
+	}, [mystate]);
 	return (
 		<div>
-			<RedTest obj={mystate} dispatch={dispatch} />
-			<About obj={mystate} dispatch={dispatch} />
+			<RedTest context={context} dispatch={dispatch} />
+			<Router>
+				<Route exact path="/about">
+					<About context={context} dispatch={dispatch} />
+				</Route>
+			</Router>
 			{/* {console.log(mystate)} */}
 			<h3>
 				{mystate.isLoggedIn ? "Signed In" : "Signed out, admin in control"}

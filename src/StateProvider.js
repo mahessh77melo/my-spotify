@@ -6,7 +6,7 @@ export const state = {
 	age: "10",
 	isLoggedIn: true,
 };
-const StateContext = createContext(state);
+const StateContext = createContext();
 export const StateProvider = ({ reducer, state, children }) => (
 	<StateContext.Provider value={useReducer(reducer, state)}>
 		{children}

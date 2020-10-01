@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { actions } from "./reducer";
 
-const About = ({ obj, dispatch }) => {
+const About = ({ context, dispatch }) => {
 	/* 	const st = useStateValue();
 	console.log(st);
 	const [myState, dispatch] = useReducer(reducer, obj); */
+	const obj = useContext(context);
 
 	return (
 		<div style={{ marginBottom: "50px" }}>
