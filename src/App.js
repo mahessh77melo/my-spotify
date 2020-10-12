@@ -3,8 +3,9 @@ import About from "./About";
 import MyApp from "./myApp";
 import RedTest from "./RedTest";
 import { useStateValue } from "./StateProvider";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { actions } from "./reducer";
+import "./App.css";
 
 function App() {
 	const [mystate, dispatch] = useStateValue();
@@ -12,13 +13,21 @@ function App() {
 	window.m = mystate;
 	useEffect(() => {
 		console.log(mystate);
+		console.log(window.location);
 	}, [mystate]);
 	return (
-		<div>
-			<RedTest context={context} dispatch={dispatch} />
+		<div className="app">
 			<Router>
 				<Route exact path="/about">
+					<RedTest context={context} dispatch={dispatch} />
 					<About context={context} dispatch={dispatch} />
+				</Route>
+				<Route exact path="/thalayaati">
+					<div>
+						<Link to="/about">
+							<button>Go to the about page</button>
+						</Link>
+					</div>
 				</Route>
 			</Router>
 			{/* {console.log(mystate)} */}

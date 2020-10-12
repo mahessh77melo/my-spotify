@@ -43,7 +43,7 @@ export default class NameForm extends Component {
 	render() {
 		return (
 			<div className="form-group">
-				<form onSubmit={this.handleSubmit}>
+				<form action="/submit" onSubmit={this.handleSubmit}>
 					<label>
 						FName :
 						<input
@@ -121,9 +121,7 @@ export default class NameForm extends Component {
 					<input type="submit" value="Submit" className="btn-sub" />
 				</form>
 				{this.state.ifgiven ? (
-					<h2>
-						{this.state.first_name + " " + this.state.last_name}
-					</h2>
+					<h2>{this.state.first_name + " " + this.state.last_name}</h2>
 				) : (
 					<h2></h2>
 				)}

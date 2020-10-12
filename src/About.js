@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 import { actions } from "./reducer";
 
@@ -34,6 +35,9 @@ const About = ({ context, dispatch }) => {
 			<button onClick={() => dispatch({ type: actions.dec_age })}>
 				decrease the age
 			</button>
+			<Link to="/thalayaati">
+				<button>got to thalayaati</button>
+			</Link>
 		</div>
 	);
 };
